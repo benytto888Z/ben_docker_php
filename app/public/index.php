@@ -1,7 +1,5 @@
-<?php # /app/public/index.php
+<?php
 
-
-use App\Repository\LanguageRepository;
 use App\Repository\TranslationRepository;
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
@@ -14,13 +12,12 @@ $cacheAdapter = new \Symfony\Component\Cache\Adapter\RedisAdapter($client);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $translationRepository = new TranslationRepository();
     $translationCache = new \App\Cache\TranslationCache($cacheAdapter, new TranslationRepository());
     $translation = $translationCache->findForLanguage($_POST['language'], $_POST['phrase']) ?: 'Translation not found...';
 
 } else {
 
-    $languageRepository = new LanguageRepository();
+    $languageRepository = new \App\Repository\LanguageRepository();
     $languages = $languageRepository->findAll();
 }
 
