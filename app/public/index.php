@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <a href="/">Translate another</a>
                 <?php else: ?>
 
-                <p class="fs-5 mb-4">Select a language and enter your word(s).</p>
+                <p class="fs-5 mb-4">Select a language and enter your word(s) to translate.</p>
 
                 <form method="post">
                     <div class="row g-3">
